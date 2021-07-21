@@ -1,0 +1,8 @@
+# Editors and IDEs
+.idea/
+*.iml
+
+# Build residue
+.snowpack
+build
+node_modules

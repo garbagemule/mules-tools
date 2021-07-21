@@ -1,0 +1,80 @@
+.app {
+  display: flex;
+  flex-direction: column;
+
+  width: 100vw;
+  height: 100vh;
+
+  background-color: whitesmoke;
+}
+
+.app nav {
+  flex: 0;
+
+  color: white;
+  background-color: black;
+  box-shadow: 0 0 5px black;
+
+  z-index: 1;
+}
+
+.app nav ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style-type: none;
+}
+
+.app nav .title {
+  float: right;
+  padding: 0.5em 1em;
+}
+
+.app nav ul li {
+  float: left;
+}
+
+.app nav ul li a {
+  display: block;
+  padding: 0.5em 1em;
+
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+.app nav ul li a:hover {
+  background-color: #252525;
+}
+
+.app main {
+  flex: 1;
+
+  padding: 1em 1em 0 1em;
+  overflow: auto;
+
+  background-color: white;
+  box-shadow: 0 0 20px darkgray;
+}
+
+.app main.sheet {
+  width: 920px;
+
+  margin: auto;
+}
+
+.app .maximize-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+
+  height: 16px;
+
+  padding: 4px;
+
+  cursor: pointer;
+}
+.app .maximize-button:hover {
+  height: 18px;
+
+  padding: 3px;
+}

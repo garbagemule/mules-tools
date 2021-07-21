@@ -1,0 +1,47 @@
+table.wave-distribution-chart {
+  table-layout: fixed;
+  border-collapse: separate;
+
+  min-width: 200px;
+  width: 70%;
+
+  margin-bottom: 16px;
+
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+table.wave-distribution-chart th {
+  width: 5.5em;
+
+  margin: 0;
+  padding: 0 4px 0 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-weight: normal;
+  text-align: right;
+}
+
+table.wave-distribution-chart td {
+  display: flex;
+  height: 16px;
+
+  margin: 0;
+  padding: 0;
+}
+
+table.wave-distribution-chart td .bar {
+  flex: 4px 0 0;
+
+  min-width: 4px;
+
+  background: lightgrey;
+}
+
+table.wave-distribution-chart td .count {
+  flex: 1;
+
+  padding-left: 4px;
+}
