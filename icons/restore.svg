@@ -1,0 +1,14 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Restore</title>
+  <rect id="tl_v" height="32" width="8" y="0" x="24" stroke="#000000" fill="#000000"/>
+  <rect id="tl_h" height="8" width="32" y="24" x="0" stroke="#000000" fill="#000000"/>
+  <rect id="tr_v" height="32" width="8" y="0" x="96" stroke="#000000" fill="#000000"/>
+  <rect id="tr_h" height="8" width="32" y="24" x="96" stroke="#000000" fill="#000000"/>
+  <rect id="br_v" height="32" width="8" y="96" x="96" stroke="#000000" fill="#000000"/>
+  <rect id="br_h" height="8" width="32" y="96" x="96" stroke="#000000" fill="#000000"/>
+  <rect id="bl_v" height="32" width="8" y="96" x="24" stroke="#000000" fill="#000000"/>
+  <rect id="bl_h" height="8" width="32" y="96" x="0" stroke="#000000" fill="#000000"/>
+ </g>
+</svg>
