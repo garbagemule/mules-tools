@@ -1,1 +1,1 @@
-export default "/mules-tools/dist/icons/maximize.svg";
+export default "/dist/icons/maximize.svg";

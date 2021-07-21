@@ -1,1 +1,1 @@
-export default "/mules-tools/dist/icons/restore.svg";
+export default "/dist/icons/restore.svg";
