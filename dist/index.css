@@ -1,25 +1,23 @@
-html, body {
+/* build/dist/index.css */
+html,
+body {
   width: 100vw;
   height: 100vh;
-
   margin: 0;
   padding: 0;
-
   color: #24292e;
   font-family:
-    '-apple-system',
-    'BlinkMacSystemFont',
-    'Segoe UI',
-    'Helvetica',
-    'Arial',
-    'sans-serif',
-    'Apple Color Emoji',
-    'Segoe UI Emoji'
-  ;
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "Helvetica",
+    "Arial",
+    "sans-serif",
+    "Apple Color Emoji",
+    "Segoe UI Emoji";
   font-size: 14px;
   line-height: 1.5;
 }
-
 h1,
 h2,
 h3,
@@ -28,8 +26,240 @@ h5,
 h6 {
   margin-top: 0;
   margin-bottom: 8px;
-
   border-bottom: 1px solid lightgrey;
-
   font-weight: 400;
+}
+
+/* build/dist/App.css */
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: whitesmoke;
+}
+.app nav {
+  flex: 0;
+  color: white;
+  background-color: black;
+  box-shadow: 0 0 5px black;
+  z-index: 1;
+}
+.app nav ul {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style-type: none;
+}
+.app nav .title {
+  float: right;
+  padding: 0.5em 1em;
+}
+.app nav ul li {
+  float: left;
+}
+.app nav ul li a {
+  display: block;
+  padding: 0.5em 1em;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+.app nav ul li a:hover {
+  background-color: #252525;
+}
+.app main {
+  flex: 1;
+  padding: 1em 1em 0 1em;
+  overflow: auto;
+  background-color: white;
+  box-shadow: 0 0 20px darkgray;
+}
+.app main.sheet {
+  width: 920px;
+  margin: auto;
+}
+.app .maximize-button {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: 16px;
+  padding: 4px;
+  cursor: pointer;
+}
+.app .maximize-button:hover {
+  height: 18px;
+  padding: 3px;
+}
+
+/* build/dist/pages/WaveAnalyzer/WaveAnalyzer.css */
+.wave-analyzer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.wave-analyzer-header {
+  flex: 0;
+  margin-bottom: 8px;
+}
+.wave-analyzer-content {
+  flex: 1;
+}
+.wave-analyzer-details {
+  flex: 1;
+  padding: 0 0 0 1em;
+}
+
+/* build/dist/components/SplitPane/SplitPane.css */
+.split-pane-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.split-pane-content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+}
+.split-pane-content .pane {
+  overflow: auto;
+}
+.split-pane-divider {
+  flex: 20px 0 0;
+}
+.split-pane-divider .slider {
+  width: calc(100% + 8px);
+  height: 100%;
+  margin: 0 4px 0 -4px;
+  padding: 0;
+  -webkit-appearance: none;
+  background-color: whitesmoke;
+  outline: none;
+  opacity: 0.5;
+}
+.split-pane-divider .slider:hover {
+  opacity: 1;
+}
+.split-pane-divider .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 8px;
+  height: 20px;
+  background-color: lightgrey;
+  cursor: pointer;
+}
+.split-pane-divider .slider::-moz-range-thumb {
+  width: 8px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* build/dist/components/WaveDistributionChart/WaveDistributionChart.css */
+table.wave-distribution-chart {
+  table-layout: fixed;
+  border-collapse: separate;
+  min-width: 200px;
+  width: 70%;
+  margin-bottom: 16px;
+  font-size: 11px;
+  line-height: 1.5;
+}
+table.wave-distribution-chart th {
+  width: 5.5em;
+  margin: 0;
+  padding: 0 4px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: normal;
+  text-align: right;
+}
+table.wave-distribution-chart td {
+  display: flex;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+}
+table.wave-distribution-chart td .bar {
+  flex: 4px 0 0;
+  min-width: 4px;
+  background: lightgrey;
+}
+table.wave-distribution-chart td .count {
+  flex: 1;
+  padding-left: 4px;
+}
+
+/* build/dist/components/WaveProgressionChart/WaveProgressionChart.css */
+.wave-progression-chart-header {
+  display: flex;
+  flex-direction: row;
+}
+.wave-progression-chart-header .legend {
+  flex: 0;
+  padding-bottom: 8px;
+}
+.wave-progression-chart-header .settings {
+  flex: 1;
+  margin-bottom: 8px;
+  text-align: right;
+}
+.wave-progression-chart-header .settings label {
+  font-size: small;
+}
+.wave-progression-chart-header .settings input {
+  width: 36px;
+}
+.wave-progression-chart-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+}
+table.wave-progression-chart {
+  table-layout: fixed;
+  border-collapse: collapse;
+  font-size: 11px;
+}
+table.wave-progression-chart tbody th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+  max-width: 7em;
+  margin: 0;
+  padding: 0 4px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: white;
+  font-weight: normal;
+  text-align: right;
+}
+table.wave-progression-chart tbody th.left-align {
+  padding: 0 0 0 4px;
+  text-align: left;
+}
+table.wave-progression-chart td.cell {
+  min-width: 16px;
+  height: 16px;
+  text-align: center;
+  border: 1px solid white;
+}
+table.wave-progression-chart td.cell.tiny {
+  min-width: 12px;
+  height: 12px;
+}
+table.wave-progression-chart td.winner {
+  background: dimgrey;
+}
+table.wave-progression-chart td.candidate {
+  background: lightgrey;
+}
+table.wave-progression-chart td.miss {
+  background: whitesmoke;
+}
+table.wave-progression-chart td hr {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid whitesmoke;
 }

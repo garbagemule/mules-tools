@@ -1,1 +1,0 @@
-export default "/mules-tools/dist/icons/restore.svg";
