@@ -34278,7 +34278,7 @@ var App = () => {
     path: "/wave-analyzer"
   }, /* @__PURE__ */ react.createElement(WaveAnalyzer_default2, null)))), /* @__PURE__ */ react.createElement("img", {
     className: "maximize-button",
-    src: maximized ? "/icons/restore.svg" : "/icons/maximize.svg",
+    src: `%PUBLIC_URL%/icons/${maximized ? "restore" : "maximize"}.svg`,
     alt: maximized ? "Restore" : "Maximize",
     onClick: () => setMaximized(!maximized)
   })));
