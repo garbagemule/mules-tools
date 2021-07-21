@@ -34257,8 +34257,6 @@ var WaveAnalyzer_default = WaveAnalyzer;
 var WaveAnalyzer_default2 = WaveAnalyzer_default;
 
 // build/dist/App.js
-import maximizeIcon from "./icons/maximize.svg";
-import restoreIcon from "./icons/restore.svg";
 var App = () => {
   const [maximized, setMaximized] = useState(false);
   return /* @__PURE__ */ react.createElement(HashRouter, {
@@ -34280,7 +34278,7 @@ var App = () => {
     path: "/wave-analyzer"
   }, /* @__PURE__ */ react.createElement(WaveAnalyzer_default2, null)))), /* @__PURE__ */ react.createElement("img", {
     className: "maximize-button",
-    src: maximized ? restoreIcon : maximizeIcon,
+    src: `icons/${maximized ? "restore" : "maximize"}.svg`,
     alt: maximized ? "Restore" : "Maximize",
     onClick: () => setMaximized(!maximized)
   })));
