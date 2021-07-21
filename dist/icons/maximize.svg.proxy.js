@@ -1,0 +1,1 @@
+export default "/dist/icons/maximize.svg";

@@ -1,0 +1,11 @@
+{
+  "imports": {
+    "ace-builds/src-noconflict/mode-yaml": "./ace-builds/src-noconflict/mode-yaml.js",
+    "ace-builds/src-noconflict/theme-chrome": "./ace-builds/src-noconflict/theme-chrome.js",
+    "js-yaml": "./js-yaml.js",
+    "react": "./react.js",
+    "react-ace": "./react-ace.js",
+    "react-dom": "./react-dom.js",
+    "react-router-dom": "./react-router-dom.js"
+  }
+}

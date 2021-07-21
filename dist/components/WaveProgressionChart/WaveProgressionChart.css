@@ -1,0 +1,91 @@
+.wave-progression-chart-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.wave-progression-chart-header .legend {
+  flex: 0;
+
+  padding-bottom: 8px;
+}
+
+.wave-progression-chart-header .settings {
+  flex: 1;
+
+  margin-bottom: 8px;
+
+  text-align: right;
+}
+.wave-progression-chart-header .settings label {
+  font-size: small;
+}
+.wave-progression-chart-header .settings input {
+  width: 36px;
+}
+
+.wave-progression-chart-container {
+  display: flex;
+  flex-direction: row;
+
+  overflow-x: scroll;
+}
+
+table.wave-progression-chart {
+  table-layout: fixed;
+  border-collapse: collapse;
+
+  font-size: 11px;
+}
+
+table.wave-progression-chart tbody th {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  max-width: 7em;
+
+  margin: 0;
+  padding: 0 4px 0 0;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  background-color: white;
+  font-weight: normal;
+  text-align: right;
+}
+table.wave-progression-chart tbody th.left-align {
+  padding: 0 0 0 4px;
+  text-align: left;
+}
+
+table.wave-progression-chart td.cell {
+  min-width: 16px;
+  height: 16px;
+
+  text-align: center;
+
+  border: 1px solid white;
+}
+table.wave-progression-chart td.cell.tiny {
+  min-width: 12px;
+  height: 12px;
+}
+table.wave-progression-chart td.winner {
+  background: dimgrey;
+}
+table.wave-progression-chart td.candidate {
+  background: lightgrey;
+}
+table.wave-progression-chart td.miss {
+  background: whitesmoke;
+}
+
+table.wave-progression-chart td hr {
+  margin: 0;
+  padding: 0;
+
+  border: 0;
+  border-bottom: 1px solid whitesmoke;
+}
