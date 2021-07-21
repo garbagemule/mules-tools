@@ -2,8 +2,8 @@ import React, {Fragment, useState} from "../../../_snowpack/pkg/react.js";
 import "./WaveProgressionChart.css.proxy.js";
 const WaveProgressionChart = (props) => {
   const [count, setCount] = useState(props.count || 20);
-  const recurrent = props.recurrent.slice().sort((a, b) => b.priority - a.priority);
   const single = props.single.slice().sort((a, b) => b.wave - a.wave);
+  const recurrent = props.recurrent.slice().sort((a, b) => b.priority - a.priority);
   const waves = [];
   for (let i = 0; i < count; i++) {
     const n = i + 1;
@@ -19,7 +19,8 @@ const WaveProgressionChart = (props) => {
       }
     }
     for (let w of recurrent) {
-      if (n >= (w.wave || 1) && n % w.frequency === 0) {
+      const first = w.wave || w.frequency;
+      if (n >= first && (first - n) % w.frequency === 0) {
         if (entry.winner == null) {
           entry.winner = w;
         }

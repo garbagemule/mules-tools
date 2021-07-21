@@ -1,6 +1,6 @@
 import React, {useState} from "../_snowpack/pkg/react.js";
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Switch,
   Route,
   Link
@@ -12,7 +12,9 @@ import restoreIcon from "./icons/restore.svg.proxy.js";
 import "./App.css.proxy.js";
 const App = () => {
   const [maximized, setMaximized] = useState(false);
-  return /* @__PURE__ */ React.createElement(Router, null, /* @__PURE__ */ React.createElement("div", {
+  return /* @__PURE__ */ React.createElement(Router, {
+    basename: "/"
+  }, /* @__PURE__ */ React.createElement("div", {
     className: "app"
   }, /* @__PURE__ */ React.createElement("nav", null, /* @__PURE__ */ React.createElement("span", {
     className: "title"
