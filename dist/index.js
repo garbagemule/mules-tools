@@ -34208,6 +34208,9 @@ var WaveAnalyzer = () => {
     }
   }, [content]);
   useEffect(() => {
+    if (doc == null) {
+      return;
+    }
     const waves = doc["waves"];
     if (waves == null) {
       return;
