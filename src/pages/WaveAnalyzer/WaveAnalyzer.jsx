@@ -13,13 +13,19 @@ import './WaveAnalyzer.css'
 const WaveAnalyzer = () => {
   const [content, setContent] = useState(sample)
   const [doc, setDoc] = useState({})
+  const [arena, setArena] = useState('default')
   const [recurrent, setRecurrent] = useState([])
   const [single, setSingle] = useState([])
 
   useEffect(() => {
     try {
       const result = yaml.load(content)
-      setDoc(result)
+      if (result['arenas'] != null) {
+        setDoc(result)
+      } else if (result['waves'] != null) {
+        const wrapper = { arenas: { default: result } }
+        setDoc(wrapper)
+      }
     } catch (e) {
       // Swallow
     }
@@ -30,7 +36,23 @@ const WaveAnalyzer = () => {
       return
     }
 
-    const waves = doc['waves']
+    const arenas = doc['arenas']
+    if (arenas == null) {
+      return
+    }
+    const names = Object.keys(arenas)
+    if (names.length === 0) {
+      return
+    }
+    if (!names.includes(arena)) {
+      setArena(names[0])
+      return
+    }
+    const selected = arenas[arena]
+    if (selected == null) {
+      return
+    }
+    const waves = selected['waves']
     if (waves == null) {
       return
     }
@@ -54,16 +76,16 @@ const WaveAnalyzer = () => {
       }))
       setSingle(result)
     }
-  }, [doc])
+  }, [doc, arena])
 
   return (
     <div className="wave-analyzer-container">
       <div className="wave-analyzer-header">
         <h1>Wave Analyzer</h1>
         <p>
-          Paste your waves section into the text area on the left and get a
-          visualization of its progression and a rundown of the composition
-          on the right.
+          Paste your config-file into the text area on the left, then pick an
+          arena on the right to get a visualization of its progression and a
+          rundown of its type distribution.
         </p>
       </div>
 
@@ -75,6 +97,16 @@ const WaveAnalyzer = () => {
           />
 
           <div className="wave-analyzer-details">
+            <h3>Arena selection</h3>
+            <p>
+              Select an arena name from the dropdown box.
+            </p>
+            <ArenaSelection
+              doc={doc}
+              arena={arena}
+              setArena={setArena}
+            />
+
             <h3>Wave distribution</h3>
             <p>
               Bar graph showing the distribution of wave types across all waves
@@ -100,6 +132,32 @@ const WaveAnalyzer = () => {
           </div>
         </SplitPane>
       </div>
+    </div>
+  )
+}
+
+const ArenaSelection = ({
+  doc,
+  arena,
+  setArena,
+}) => {
+  if (doc == null) {
+    return null
+  }
+  const section = doc['arenas']
+  if (section == null) {
+    return null
+  }
+
+  return (
+    <div className="arena-selection">
+      <select value={arena} onChange={e => setArena(e.target.value)}>
+        {
+          Object.keys(section).map(name => (
+            <option key={name} value={name}>{ name }</option>
+          ))
+        }
+      </select>
     </div>
   )
 }
