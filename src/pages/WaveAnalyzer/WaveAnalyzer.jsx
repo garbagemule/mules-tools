@@ -65,6 +65,8 @@ const WaveAnalyzer = () => {
         ...section[key],
       }))
       setRecurrent(result)
+    } else {
+      setRecurrent([])
     }
 
     if (waves['single'] != null) {
@@ -75,6 +77,8 @@ const WaveAnalyzer = () => {
         ...section[key],
       }))
       setSingle(result)
+    } else {
+      setSingle([])
     }
   }, [doc, arena])
 
