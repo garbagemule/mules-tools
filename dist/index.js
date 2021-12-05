@@ -34198,12 +34198,18 @@ var sample_default = sample.trim();
 var WaveAnalyzer = () => {
   const [content, setContent] = useState(sample_default);
   const [doc, setDoc] = useState({});
+  const [arena, setArena] = useState("default");
   const [recurrent, setRecurrent] = useState([]);
   const [single, setSingle] = useState([]);
   useEffect(() => {
     try {
       const result = js_yaml_default.load(content);
-      setDoc(result);
+      if (result["arenas"] != null) {
+        setDoc(result);
+      } else if (result["waves"] != null) {
+        const wrapper = {arenas: {default: result}};
+        setDoc(wrapper);
+      }
     } catch (e2) {
     }
   }, [content]);
@@ -34211,7 +34217,23 @@ var WaveAnalyzer = () => {
     if (doc == null) {
       return;
     }
-    const waves = doc["waves"];
+    const arenas = doc["arenas"];
+    if (arenas == null) {
+      return;
+    }
+    const names = Object.keys(arenas);
+    if (names.length === 0) {
+      return;
+    }
+    if (!names.includes(arena)) {
+      setArena(names[0]);
+      return;
+    }
+    const selected = arenas[arena];
+    if (selected == null) {
+      return;
+    }
+    const waves = selected["waves"];
     if (waves == null) {
       return;
     }
@@ -34223,6 +34245,8 @@ var WaveAnalyzer = () => {
         ...section[key]
       }));
       setRecurrent(result);
+    } else {
+      setRecurrent([]);
     }
     if (waves["single"] != null) {
       const section = waves["single"];
@@ -34232,20 +34256,26 @@ var WaveAnalyzer = () => {
         ...section[key]
       }));
       setSingle(result);
+    } else {
+      setSingle([]);
     }
-  }, [doc]);
+  }, [doc, arena]);
   return /* @__PURE__ */ react.createElement("div", {
     className: "wave-analyzer-container"
   }, /* @__PURE__ */ react.createElement("div", {
     className: "wave-analyzer-header"
-  }, /* @__PURE__ */ react.createElement("h1", null, "Wave Analyzer"), /* @__PURE__ */ react.createElement("p", null, "Paste your waves section into the text area on the left and get a visualization of its progression and a rundown of the composition on the right.")), /* @__PURE__ */ react.createElement("div", {
+  }, /* @__PURE__ */ react.createElement("h1", null, "Wave Analyzer"), /* @__PURE__ */ react.createElement("p", null, "Paste your config-file into the text area on the left, then pick an arena on the right to get a visualization of its progression and a rundown of its type distribution.")), /* @__PURE__ */ react.createElement("div", {
     className: "wave-analyzer-content"
   }, /* @__PURE__ */ react.createElement(SplitPane_default2, null, /* @__PURE__ */ react.createElement(CodeEditor_default2, {
     value: content,
     onChange: setContent
   }), /* @__PURE__ */ react.createElement("div", {
     className: "wave-analyzer-details"
-  }, /* @__PURE__ */ react.createElement("h3", null, "Wave distribution"), /* @__PURE__ */ react.createElement("p", null, "Bar graph showing the distribution of wave types across all waves in the configuration."), /* @__PURE__ */ react.createElement(WaveDistributionChart_default2, {
+  }, /* @__PURE__ */ react.createElement("h3", null, "Arena selection"), /* @__PURE__ */ react.createElement("p", null, "Select an arena name from the dropdown box."), /* @__PURE__ */ react.createElement(ArenaSelection, {
+    doc,
+    arena,
+    setArena
+  }), /* @__PURE__ */ react.createElement("h3", null, "Wave distribution"), /* @__PURE__ */ react.createElement("p", null, "Bar graph showing the distribution of wave types across all waves in the configuration."), /* @__PURE__ */ react.createElement(WaveDistributionChart_default2, {
     recurrent,
     single
   }), /* @__PURE__ */ react.createElement("h3", null, "Wave progression"), /* @__PURE__ */ react.createElement("p", null, "This chart lists all the waves of the configuration with single waves on top (ordered by ", /* @__PURE__ */ react.createElement("code", null, "wave"), ") and recurrent waves at the bottom (ordered by ", /* @__PURE__ */ react.createElement("code", null, "priority"), "). For each wave number (x-axis), the chart marks the candidates and the winner."), /* @__PURE__ */ react.createElement(WaveProgressionChart_default2, {
@@ -34253,6 +34283,28 @@ var WaveAnalyzer = () => {
     single,
     count: 30
   })))));
+};
+var ArenaSelection = ({
+  doc,
+  arena,
+  setArena
+}) => {
+  if (doc == null) {
+    return null;
+  }
+  const section = doc["arenas"];
+  if (section == null) {
+    return null;
+  }
+  return /* @__PURE__ */ react.createElement("div", {
+    className: "arena-selection"
+  }, /* @__PURE__ */ react.createElement("select", {
+    value: arena,
+    onChange: (e2) => setArena(e2.target.value)
+  }, Object.keys(section).map((name) => /* @__PURE__ */ react.createElement("option", {
+    key: name,
+    value: name
+  }, name))));
 };
 var WaveAnalyzer_default = WaveAnalyzer;
 

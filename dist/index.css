@@ -109,6 +109,9 @@ h6 {
   flex: 1;
   padding: 0 0 0 1em;
 }
+.wave-analyzer-details .arena-selection {
+  margin-bottom: 16px;
+}
 
 /* build/dist/components/SplitPane/SplitPane.css */
 .split-pane-container {
